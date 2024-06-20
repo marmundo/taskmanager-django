@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+{%if task%}
+<form>
+  <label for="task">{{ task.title }}</label>
+  <br />
+  <label for="description">Descrição:</label>
+  <p>{{ task.description }}</p>
+  <label for="completed">Concluída:</label>
+  <p>{{ task.completed }}</p>
+  <label for="created_at">Criada em:</label>
+  <p>{{ task.created_at }}</p>
+  <label for="updated_at">Atualizada em:</label>
+  <p>{{ task.updated_at }}</p>
+  <a href="{% url 'taskmanager:edit' task.id %}">Editar</a>
+   {% comment %}
+  <a href="{% url 'taskmanager:delete' task.id %}">Excluir</a> {% endcomment %}
+</form>
+{%else%}
+<p>Tarefa não encontrada</p>
+{%endif%}

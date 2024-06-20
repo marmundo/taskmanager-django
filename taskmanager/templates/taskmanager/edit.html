@@ -1,0 +1,28 @@
+{% extends "base_generic.html" %} {% block content %} {% if task %}
+<form action="{% url 'taskmanager:update' task.id%}" method="post">
+  {% csrf_token %}
+  <div class="container">
+    <input
+      name="completed"
+      type="checkbox"
+      {%if task.completed%}
+      checked
+      {%endif%}
+    />
+    <label for="completed">Tarefa Concluída?</label>
+  </div>
+
+  <label for="title">Título:</label>
+  <input name="title" value="{{ task.title }}" />
+  <label for="description">Descrição:</label>
+  <input name="description" value="{{ task.description }}" />
+  <div class="container">
+    <input type="submit" value="Salvar" />
+    <a href="{% url 'taskmanager:delete' task.id %}"
+      ><input type="button" value="Excluir"
+    /></a>
+  </div>
+</form>
+{% else %}
+<p>Tarefa não encontrada</p>
+{% endif %} {% endblock%}

@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %} {% block content %} {% if latest_task_list %}
+{% for task in latest_task_list %}
+<input
+  type="radio"
+  name="task"
+  value="{{ task.id }}"
+  {%if task.completed%}checked{%endif%}
+/>
+<a class="tarefa-item" href="{% url 'taskmanager:edit' task.id %}">{{ task.title }}</a>
+<br />
+{% endfor %} {% else %}
+<h1>Você não tem tarefas</h1>
+{% endif %}
+<br />
+<div class="container">
+    <a href="{% url 'taskmanager:create' %}">
+        <input id="create-button" type="button" value="Criar Tarefa" />
+    </a>
+</div>
+
+{% endblock %}

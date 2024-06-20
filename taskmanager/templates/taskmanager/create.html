@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<form method="post" action="{% url 'taskmanager:create' %}">
+    {% csrf_token %}
+    <label for="title">Título:</label>
+    <input type="text" name="title" />
+    <br />
+    <label for="description">Descrição:</label>
+    <input type="text" name="description" />
+    <br />
+    <input type="submit" value="Criar">
+</form>
+{%endblock%}
