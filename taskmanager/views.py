@@ -4,10 +4,10 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from .models import Task
 # Create your views here.
-def index(request):
+def main(request):
     latest_task_list = Task.objects.order_by('-created_at')[:5]
     context = {'latest_task_list': latest_task_list}
-    return render(request, 'taskmanager/index.html', context)
+    return render(request, 'taskmanager/main.html', context)
 
 def detail(request, task_id):
     task = get_object_or_404(Task, pk=task_id)
