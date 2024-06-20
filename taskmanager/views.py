@@ -5,10 +5,7 @@ from django.urls import reverse
 from .models import Task
 # Create your views here.
 def index(request):
-    try:
-        latest_task_list = Task.objects.order_by('-created_at')[:5]
-    except Task.DoesNotExist:
-        raise Http404("Nenhuma Tarefa Cadastrada")
+    latest_task_list = Task.objects.order_by('-created_at')[:5]
     context = {'latest_task_list': latest_task_list}
     return render(request, 'taskmanager/index.html', context)
 
